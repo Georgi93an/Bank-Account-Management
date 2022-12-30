@@ -36,8 +36,13 @@ public abstract class Account {
 		return accountNumber;
 	}
 
+
 	public Client getClient() {
 		return client;
+	}
+	
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	//toString method
