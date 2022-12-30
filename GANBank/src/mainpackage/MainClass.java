@@ -1,8 +1,10 @@
 package mainpackage;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.*;
 import java.util.Map.*;
+import java.util.function.Predicate;
 
 import components.*;
 
@@ -18,6 +20,9 @@ public class MainClass {
 
 	//1.3.1  Adaptation of the table of accounts, declaring hashtable
 	private static Map<Integer, Account>orderedAccounts= new Hashtable<>(); 
+	
+	//1.3.4 Declaring the collection of flows
+	private static Collection<Flow>flows=new ArrayList<>();
 
 	public static void main(String[] args) {
 		//1.1.2
@@ -30,6 +35,11 @@ public class MainClass {
 
 		//1.3.1
 		loadHastable(accounts);
+		
+		//1.3.4-1.3.5
+		loadFlows();
+		updateBalance(orderedAccounts, flows);
+		//1.3.1
 		orderHashTable();
 	}
 
@@ -79,4 +89,47 @@ public class MainClass {
 		System.out.println("Ordered Accounts"+"\n"+"**********");
 		System.out.println(hashtableToString);
 	}
+	
+	//1.3.4 Method to load flows
+	private static void loadFlows() {
+		LocalDate flowDate=LocalDate.now().plusDays(2);
+	
+		flows.add(new Debit("a debit of 50€ from account n°1", "Debit",50.0,
+				((ArrayList<Account>) accounts).get(0).getAccountNumber(), false, flowDate));
+		
+		accounts.stream().filter(CurrentAccount.class::isInstance)
+		.forEach(x->flows.add(new Credit("A credit of 100.50€ on all current accounts in the array of accounts ", 
+					"Credit", 100.5, x.getAccountNumber(), false, flowDate)));
+		
+		accounts.stream()
+		.filter(SavingsAccount.class::isInstance)
+		.forEach(acc->
+		flows.add(new Credit("Credit of 1500€ on all SavingsAccounts",
+				"Credit", 1500.0, acc.getAccountNumber(), false, flowDate)));
+		
+		flows.add(new Transfer("Transfer of 50€ from Account 1 to Account 2", 
+				"Transfer", 50.0, ((ArrayList<Account>) accounts).get(1).getAccountNumber()
+				, false, ((ArrayList<Account>) accounts).get(0).getAccountNumber(), flowDate));
+						
+	}
+	
+	//1.3.5  Updating accounts
+	private static void updateBalance(Map<Integer, Account> hashtable,Collection<Flow> flows) {
+		for (Flow flow : flows) {
+			Account targetAccount= hashtable.get(flow.getTargetAccountNumber());
+			targetAccount.setBalance(flow);
+
+			if (flow instanceof Transfer transfer) {
+				Account issuingAcc=hashtable.get(transfer.getIssuingAccount());
+				issuingAcc.setBalance(flow);
+			}
+		}
+
+		Predicate<Account>negativeBalance=acc->acc.getBalance()<0;
+		Optional<Account>accNegativeBalance=hashtable.values().stream().filter(negativeBalance).findAny();
+		accNegativeBalance.ifPresentOrElse(x -> System.out.println(x.getAccountNumber() + " Has Negative Balance ")
+				,() -> System.out.println("All accounts have Positive Balance"));	
+	}
+	
+	
 }

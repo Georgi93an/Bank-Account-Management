@@ -6,13 +6,13 @@ public abstract class Flow {
 	//1.3.2 Creation of Flow Class
 	private String comment;
 	private String identifier;
-	private int amount;
+	private double amount;
 	private int targetAccountNumber;
 	private boolean effect;
 	private LocalDate dateOfFlowDate;
 
 	//Constructor
-	protected Flow(String comment, String identifier, int amount, int targetAccountNumber, boolean effect,LocalDate dateOfFlowDate) {
+	protected Flow(String comment, String identifier, double amount, int targetAccountNumber, boolean effect,LocalDate dateOfFlowDate) {
 		this.comment = comment;
 		this.identifier = identifier;
 		this.amount = amount;
@@ -34,7 +34,7 @@ public abstract class Flow {
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 	public void setAmount(int amount) {

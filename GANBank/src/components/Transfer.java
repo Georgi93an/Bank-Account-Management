@@ -7,7 +7,7 @@ public class Transfer extends Flow{
 
 	private int issuingAccount;
 
-	public Transfer(String comment, String identifier, int amount, int targetAccountNumber, boolean effect,
+	public Transfer(String comment, String identifier, double amount, int targetAccountNumber, boolean effect,
 			int issuingAccount,LocalDate dateOfFlowDate) {
 		super(comment, identifier, amount, targetAccountNumber, effect, dateOfFlowDate);
 		this.issuingAccount=issuingAccount;
