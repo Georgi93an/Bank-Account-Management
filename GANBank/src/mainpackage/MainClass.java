@@ -147,7 +147,7 @@ public class MainClass {
 		.filter(SavingsAccount.class::isInstance)
 		.forEach(x->
 		flows.add(new Credit("Credit of 1500€ on all SavingsAccounts",
-				"Credit", 1500.0, acc.getAccountNumber(), false, flowDate)));
+				"Credit", 1500.0, x.getAccountNumber(), false, flowDate)));
 
 		flows.add(new Transfer("Transfer of 50€ from Account 1 to Account 2", 
 				"Transfer", 50.0, ((ArrayList<Account>) accounts).get(1).getAccountNumber()
