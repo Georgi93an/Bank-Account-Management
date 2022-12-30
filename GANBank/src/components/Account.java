@@ -10,9 +10,9 @@ public abstract class Account {
 	
 	//Constructor
 	protected Account(String label, Client client) {
-		super();
 		this.label = label;
 		this.client = client;
+		accountNumber=nextAccount++;
 	}
 
 	//Accessors & Mutators
@@ -36,16 +36,8 @@ public abstract class Account {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
 	public Client getClient() {
 		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
 	}
 
 	//toString method
