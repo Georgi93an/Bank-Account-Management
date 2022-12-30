@@ -145,7 +145,7 @@ public class MainClass {
 
 		accounts.stream()
 		.filter(SavingsAccount.class::isInstance)
-		.forEach(x->
+		.forEach(a->
 		flows.add(new Credit("Credit of 1500€ on all SavingsAccounts",
 				"Credit", 1500.0, x.getAccountNumber(), false, flowDate)));
 

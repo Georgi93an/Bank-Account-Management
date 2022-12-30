@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Usuario/Desktop/json-20220924.jar">
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/Bank-Account-Management/GANBank/bin/resources/json-20220924.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

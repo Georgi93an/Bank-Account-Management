@@ -1,0 +1,29 @@
+[
+{
+"Comment": "Debit of 50€ From Account 1",
+"Identifier": "Debit",
+"Amount": 50,
+"Target Account":1,
+"Effect": true
+},
+{
+"Comment": "Credit of 100.50€ on All CurrentAccounts",
+"Identifier": "Credit-C",
+"Amount": 100.5,
+"Effect": true
+},
+{
+"Comment": "Credit of 1500€ on All SurrentSavingsAccounts",
+"Identifier": "Credit-S",
+"Amount": 1500,
+"Effect": true
+},
+{
+"Comment": "A transfer of 50 € from account n ° 1 to account n ° 2",
+"Identifier": "Transfer",
+"Amount": 50,
+"Target Account":2,
+"Issuing Account":1,
+"Effect": true
+}
+]
