@@ -53,6 +53,10 @@ public abstract class Account {
 	public Client getClient() {
 		return client;
 	}
+	
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	//toString method
 	public String toString() {

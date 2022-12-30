@@ -1,0 +1,8 @@
+<Accounts>
+	<Account>
+		<label>Current Accounts Label</label>
+	</Account>
+	<Account>
+		<label>Savings Accounts Label</label>
+	</Account>	
+</Accounts>
